@@ -19,6 +19,7 @@ jobs:
         uses: bridgecrewio/checkov-action@master
         with:
           directory: cloudrun-terraform/
+          quiet: true # optional: display only failed checks
       - name: Post comment to GitHub PR
         uses: mshick/add-pr-comment@v1
         if: ${{ failure() && steps.checkov.outcome == 'failure' }}
