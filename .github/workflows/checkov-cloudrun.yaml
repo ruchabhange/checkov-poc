@@ -5,7 +5,7 @@ on:
     
 env:
   PR_NUMBER: ${{ github.event.number }}
-
+  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 jobs:
   checkov-job:
     runs-on: ubuntu-latest
@@ -23,7 +23,6 @@ jobs:
         uses: mshick/add-pr-comment@v1
         if: ${{ failure() && steps.checkov.outcome == 'failure' }}
         with:
-          #repo-token: ${{ inputs.GITHUB_TOKEN }}
-          repo-token: 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
-          message: |
+         repo-token: ${{ secrets.GITHUB_TOKEN }}
+         message: |
             ${{ env.CHECKOV_RESULTS }}          
