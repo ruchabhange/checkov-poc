@@ -5,7 +5,7 @@ on:
     
 env:
   PR_NUMBER: ${{ github.event.number }}
-  GITHUB_TOKEN: ${{secrets.TOKEN}}
+
 jobs:
   checkov-job:
     runs-on: ubuntu-latest
