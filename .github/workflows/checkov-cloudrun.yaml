@@ -26,9 +26,9 @@ jobs:
         with:
          repo-token: ${{ secrets.TOKEN }}
          message: |
-            ${{ env.CHECKOV_RESULTS }}          
+            ${{ env.CHECKOV_RESULTS }}
       - name: Block Merge Commits
         if: ${{ failure() && steps.checkov.outcome == 'failure' }}
-        uses: Morishiri/block-merge-commits-action@v2
+        uses: Morishiri/block-merge-commits-action@v1.0.1
         with:
            repo-token: ${{ secrets.TOKEN }}
