@@ -24,5 +24,6 @@ jobs:
         if: ${{ failure() && steps.checkov.outcome == 'failure' }}
         with:
           #repo-token: ${{ inputs.GITHUB_TOKEN }}
+          repo-token: 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
           message: |
             ${{ env.CHECKOV_RESULTS }}          
