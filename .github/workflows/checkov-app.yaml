@@ -1,8 +1,8 @@
 name: checkov-app
 on:
-  push:
-    paths:
-      - 'app/**'
+  #push:
+  #  paths:
+  #    - 'app/**'
   pull_request:
     types: [opened]
     paths: 
@@ -25,7 +25,7 @@ jobs:
           export_default_credentials: true
       - name: Build Docker Image
         run: |
-          docker build -t checkov-demo:latest .
+          docker build -t checkov-demo:latest app/.
           
       - name: push image using gcloud 
         run : gcloud builds submit --tag gcr.io/omni-new/checkov-demo
