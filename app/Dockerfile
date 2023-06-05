@@ -3,6 +3,8 @@
 # https://hub.docker.com/_/golang
 FROM golang:1.13 as builder
 
+USER 1002
+
 # Create and change to the app directory.
 WORKDIR /app
 
