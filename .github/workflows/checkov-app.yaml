@@ -1,0 +1,36 @@
+name: checkov-app
+on:
+  pull_request:
+    types: [opened]
+    
+env:
+  PR_NUMBER: ${{ github.event.number }}
+
+jobs:
+  checkov-job:
+    runs-on: ubuntu-latest
+    name: checkov-action
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@master
+
+      - name: Run Checkov action
+        id: checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: app/
+          quiet: true # optional: display only failed checks
+          output_format: github_failed_only
+          
+      - name: Post comment to GitHub PR
+        uses: mshick/add-pr-comment@v1
+        if: ${{ failure() && steps.checkov.outcome == 'failure' }}
+        with:
+         repo-token: ${{ secrets.TOKEN }}
+         message: |
+            ${{ env.CHECKOV_RESULTS }}
+      - name: Block Merge Commits
+        if: ${{ failure() && steps.checkov.outcome == 'failure' }}
+        uses: Morishiri/block-merge-commits-action@v1.0.1
+        with:
+           repo-token: ${{ secrets.TOKEN }}
