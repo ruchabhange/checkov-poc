@@ -1,4 +1,4 @@
-name: cloudrun-checkov
+name: checkov-terraform
 on:
   pull_request:
     types: [opened]
@@ -18,9 +18,10 @@ jobs:
         id: checkov
         uses: bridgecrewio/checkov-action@master
         with:
-          directory: cloudrun-terraform/
+          directory: terraform/
           quiet: true # optional: display only failed checks
           output_format: github_failed_only
+          
       - name: Post comment to GitHub PR
         uses: mshick/add-pr-comment@v1
         if: ${{ failure() && steps.checkov.outcome == 'failure' }}
@@ -28,15 +29,8 @@ jobs:
          repo-token: ${{ secrets.TOKEN }}
          message: |
             ${{ env.CHECKOV_RESULTS }}
-      #- name: Check for label
-       # if: ${{ steps.checkov.outcome == 'failure' , 'do not merge' }}
-       # run: |
-        #  echo "Pull request is labeled as 'do not merge'"
-        #  echo "This workflow fails so that the pull request cannot be merged"
-        #  exit 1     
       - name: Block Merge Commits
         if: ${{ failure() && steps.checkov.outcome == 'failure' }}
         uses: Morishiri/block-merge-commits-action@v1.0.1
         with:
            repo-token: ${{ secrets.TOKEN }}
-     #  output_format: github_failed_only
