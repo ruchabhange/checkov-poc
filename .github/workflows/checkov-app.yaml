@@ -33,7 +33,13 @@ jobs:
       - name: Build Docker Image
         if: ${{ failure() && steps.checkov.outcome == 'failure' }}
         run: cd app && docker build -t checkov-poc:latest .
-      
+        
+      - name: Push Docker Image to Container Registry (GCR)
+        env:
+         GIT_TAG: ${{ steps.increment-git-tag.outputs.git-tag }}
+        run: |-
+         docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
+         docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
          
       - name: Post comment to GitHub PR
         uses: mshick/add-pr-comment@v1
