@@ -26,7 +26,7 @@ resource "google_cloud_run_service" "default" {
   }
 }
 
-# Ressource 2: gives to non authenticated users access to the web page
+# Ressource 2: gives to non aut henticated users access to the web page
 # To set up this resource with Terraform, the service account key used 
 # must have the appropriate permissions.
 data "google_iam_policy" "noauth" {
