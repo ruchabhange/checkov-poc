@@ -1,8 +1,5 @@
 name: checkov-app
 on:
-  #push:
-  #  paths:
-  #    - 'app/**'
   pull_request:
     types: [opened]
     paths: 
@@ -34,9 +31,8 @@ jobs:
           output_format: github_failed_only
           
       - name: Build Docker Image
-       # if: ${{ steps.checkov.outcome == 'success' }}
+       #if: ${{ steps.checkov.outcome == 'success' }}
         run: |
-         docker build -t checkov-demo:latest app/.
          gcloud builds submit --tag gcr.io/omni-new/checkov-demo app/DockerFile
          
       - name: Post comment to GitHub PR
