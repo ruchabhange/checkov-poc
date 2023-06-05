@@ -31,8 +31,8 @@ jobs:
 #           output_format: github_failed_only
           
       - name: Build Docker Image
-       #if: ${{ steps.checkov.outcome == 'success' }}
-        run: gcloud builds submit --tag gcr.io/omni-new/checkov-demo app/Dockerfile
+        run: docker build -t checkov-poc:latest app/Dockerfile .
+      
          
       - name: Post comment to GitHub PR
         uses: mshick/add-pr-comment@v1
