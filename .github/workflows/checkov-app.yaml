@@ -32,7 +32,7 @@ jobs:
           
       - name: Build Docker Image
         if: ${{ failure() && steps.checkov.outcome == 'failure' }}
-        run: docker build -t checkov-poc:latest app/Dockerfile .
+        run: docker build -t checkov-poc:latest -f app/Dockerfile .
       
          
       - name: Post comment to GitHub PR
