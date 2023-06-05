@@ -1,5 +1,0 @@
-*.log
-*.terraform.lock.hcl
-*.tfstate
-*.terraform
-kubeconfig*
