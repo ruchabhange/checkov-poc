@@ -1,5 +1,8 @@
 name: checkov-app
 on:
+  push:
+    paths:
+      - folder1/**
   pull_request:
     types: [opened]
     
