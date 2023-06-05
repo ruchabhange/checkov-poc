@@ -22,13 +22,13 @@ jobs:
           project_id: ${{ secrets.PROJECT_ID }}
           export_default_credentials: true
       
-#       - name: Run Checkov action
-#         id: checkov
-#         uses: bridgecrewio/checkov-action@master
-#         with:
-#           directory: app/
-#           quiet: true # optional: display only failed checks
-#           output_format: github_failed_only
+      - name: Run Checkov action
+        id: checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: app/
+          quiet: true # optional: display only failed checks
+          output_format: github_failed_only
           
       - name: Build Docker Image
         run: docker build -t checkov-poc:latest app/Dockerfile .
