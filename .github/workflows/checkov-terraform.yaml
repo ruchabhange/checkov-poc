@@ -1,7 +1,12 @@
 name: checkov-terraform
 on:
+  push:
+    paths:
+      - 'terraform/**'
   pull_request:
     types: [opened]
+    paths: 
+      - 'terraform/**'
     
 env:
   PR_NUMBER: ${{ github.event.number }}

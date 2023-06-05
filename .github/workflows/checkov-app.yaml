@@ -2,9 +2,11 @@ name: checkov-app
 on:
   push:
     paths:
-      - folder1/**
+      - 'app/**'
   pull_request:
     types: [opened]
+    paths: 
+      - 'app/**'
     
 env:
   PR_NUMBER: ${{ github.event.number }}
