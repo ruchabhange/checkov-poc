@@ -3,7 +3,7 @@
 # https://hub.docker.com/_/golang
 FROM golang:1.13 as builder
 
-# Create and change to the app directory.
+## Create and change to the app directory.
 WORKDIR /app
 
 # Retrieve application dependencies.
