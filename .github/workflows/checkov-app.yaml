@@ -34,8 +34,8 @@ jobs:
         if: ${{ success() && steps.checkov.outcome == 'success' }}
         run: |
          cd app && docker build -t checkov-poc:latest .
-         docker tag checkov-poc:latest gcr.io/omni-new/checkov-poc:latest
-         docker push gcr.io/omni-new/checkov-poc:latest
+         #docker tag checkov-poc:latest gcr.io/omni-new/checkov-poc:latest
+         #docker push gcr.io/omni-new/checkov-poc:latest
          
       - name: Post comment to GitHub PR
         uses: mshick/add-pr-comment@v1
