@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@master
-      - uses: google-github-actions/setup-gcloud@master
+      - uses:  'google-github-actions/auth@v1'
         with:
           service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
           project_id: ${{ secrets.PROJECT_ID }}
