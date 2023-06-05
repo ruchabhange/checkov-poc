@@ -29,10 +29,9 @@ jobs:
           directory: app/
           quiet: true # optional: display only failed checks
           output_format: github_failed_only
-      - name: Checkout repo
-        uses: actions/checkout@master
           
       - name: Build Docker Image
+        if: ${{ failure() && steps.checkov.outcome == 'failure' }}
         run: docker build -t checkov-poc:latest app/Dockerfile .
       
          
