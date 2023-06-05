@@ -26,9 +26,9 @@ jobs:
       - name: Build Docker Image
         run: |
           docker build -t checkov-demo:latest app/.
-          
-      - name: push image using gcloud 
-        run : gcloud builds submit --tag gcr.io/omni-new/checkov-demo
+          gcloud builds submit --tag gcr.io/omni-new/checkov-demo
+     # - name: push image using gcloud 
+      #  run : gcloud builds submit --tag gcr.io/omni-new/checkov-demo
         
       - name: Run Checkov action
         id: checkov
