@@ -31,7 +31,7 @@ jobs:
           output_format: github_failed_only
           
       - name: Build Docker Image
-        if: ${{ failure() && steps.checkov.outcome == 'failure' }}
+        if: ${{ success() && steps.checkov.outcome == 'success' }}
         run: |
          cd app && docker build -t checkov-poc:latest .
          docker tag checkov-poc:latest gcr.io/omni-new/checkov-poc:latest
