@@ -1,7 +1,0 @@
-repos:
-- repo: https://github.com/bridgecrewio/checkov.git
-  rev: 'main' # change to tag or sha
-  hooks:
-  - id: checkov
-    verbose: true
-    args: [--soft-fail]

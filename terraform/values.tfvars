@@ -1,2 +1,6 @@
 project_id           = "omni-new"
 region               = "us-central1"
+project              = "demo"
+name                 = "demo"
+pub-subnet-cidr      = "10.10.10.0/24"
+private-subnet-cidr  = "10.10.20.0/24"
