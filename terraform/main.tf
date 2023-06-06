@@ -30,8 +30,12 @@ resource "google_compute_subnetwork" "private-subnet" {
 
 resource "google_compute_instance" "default" {
 name = "${var.name}-instance"
-machine_type = "f1-micro"
+machine_type = "e2-micro"
 zone         = "us-central1-a"
+labels = {
+    env = "demo",
+    app = "checkov",
+  }
 boot_disk {
      initialize_params {
          image = "debian-cloud/debian-11"

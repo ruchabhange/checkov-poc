@@ -1,0 +1,13 @@
+---
+metadata:
+  name: "Check if machine type is not e2-types "
+  id: "CKV2_GCP_300"
+  category: "GENERAL_SECURITY"
+
+definition:
+  resource_types:
+    - google_compute_instance
+  operator: starting_with
+  attribute: machine_type
+  cond_type: attribute
+  value: e2-
