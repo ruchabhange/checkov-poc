@@ -1,6 +1,6 @@
 ---
 metadata:
-  name: "Check if machine type is not e2-types "
+  name: "Check if machine type is not e2 type"
   id: "CKV2_GCP_300"
   category: "GENERAL_SECURITY"
 
