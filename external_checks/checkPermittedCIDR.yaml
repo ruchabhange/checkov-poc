@@ -1,0 +1,17 @@
+---
+metadata:
+  name: "Check if CIDR are from permitted range in firewall"
+  id: "CKV2_GCP_302"
+  category: "GENERAL_SECURITY"
+
+definition:
+  resource_types:
+    - google_compute_firewall
+  operator: contains
+  attribute: source_ranges
+  cond_type: attribute
+  value: "130.211.0.0/22"
+    # - "35.191.0.0/16"
+    
+
+  

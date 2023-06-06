@@ -1,0 +1,21 @@
+---
+metadata:
+  name: "Check required tags are present "
+  id: "CKV2_GCP_303"
+  category: "GENERAL_SECURITY"
+
+definition:
+  and:
+    - resource_types:
+        - google_compute_instance
+      operator: equals
+      attribute: labels.env
+      cond_type: attribute
+      value: "demo"
+      
+    - resource_types:
+        - google_compute_instance
+      operator: equals
+      attribute: labels.app
+      cond_type: attribute
+      value: "checkov"
