@@ -1,8 +1,5 @@
 name: checkov-app
 on:
-  #push:
-  #  paths:
-  #    - 'app/**'
   pull_request:
     types: [opened]
     paths: 
@@ -34,10 +31,11 @@ jobs:
           output_format: github_failed_only
           
       - name: Build Docker Image
-       # if: ${{ steps.checkov.outcome == 'success' }}
+        if: ${{ success() && steps.checkov.outcome == 'success' }}
         run: |
-         docker build -t checkov-demo:latest app/.
-         gcloud builds submit --tag gcr.io/omni-new/checkov-demo app/DockerFile
+         cd app && docker build -t checkov-poc:latest .
+         #docker tag checkov-poc:latest gcr.io/omni-new/checkov-poc:latest
+         #docker push gcr.io/omni-new/checkov-poc:latest
          
       - name: Post comment to GitHub PR
         uses: mshick/add-pr-comment@v1
