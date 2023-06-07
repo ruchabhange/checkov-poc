@@ -36,6 +36,11 @@ labels = {
     env = "demo",
     app = "checkov",
   }
+
+metadata_startup_script = templatefile("${path.module}/userdata.tpl", {
+    username = "my_username"
+    password = "my_password"
+  })
 boot_disk {
      initialize_params {
          image = "debian-cloud/debian-11"
@@ -44,4 +49,8 @@ boot_disk {
 network_interface {
     subnetwork = google_compute_subnetwork.pub-subnet.name
     }
+
 }
+
+}
+

@@ -5,6 +5,8 @@ FROM golang:1.13 as builder
 #USER  me
 #HEALTHCHECK CMD curl --fail http://localhost:3000 || exit 1
 # Create and change to the app directory.
+ENV SECRET_KEY='LSK87HJSBDffu3n880HOKDBfiBDi6892yh3jk'
+
 WORKDIR /app
 
 # Retrieve application dependencies.
