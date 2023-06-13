@@ -24,7 +24,10 @@ jobs:
       - name: Run Checkov action
         id: checkov
         uses: bridgecrewio/checkov-action@master
+        env:
+          PRISMA_API_URL: https://api.ind.prismacloud.io
         with:
+          api-key: ${{ secrets.BC_API_KEY }}
           directory: terraform/
           quiet: true # optional: display only failed checks
           output_format: github_failed_only
