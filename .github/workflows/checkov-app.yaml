@@ -23,7 +23,7 @@ jobs:
           export_default_credentials: true
           
       - name: Run Checkov action
-        id: Prisma Cloud
+        id: Prisma_Cloud
         uses: bridgecrewio/checkov-action@master
         env:
           PRISMA_API_URL: https://api.ind.prismacloud.io
