@@ -54,3 +54,28 @@ network_interface {
 
 }
 
+
+resource "google_compute_instance" "vm1" {
+name = "${var.name}-instance"
+machine_type = "e2-medium"
+zone         = "us-central1-a"
+labels = {
+    env = "demo",
+    app = "checkov-backend",
+  }
+
+metadata_startup_script = templatefile("${path.module}/userdata.tpl", {
+    username = "my_username"
+    password = "my_password"
+  })
+boot_disk {
+     initialize_params {
+         image = "debian-cloud/debian-11"
+         }
+     }   
+network_interface {
+    subnetwork = google_compute_subnetwork.pub-subnet.name
+    }
+
+}
+
