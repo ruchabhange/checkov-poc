@@ -1,4 +1,4 @@
-# Ressource 1: cloud run service running the docker image
+## Ressource 1: cloud run service running the docker image
 # Write the path to the docker image hosted in the google container registry
 # To set up this resource with Terraform, the service account key used 
 # must have the appropriate permissions.
